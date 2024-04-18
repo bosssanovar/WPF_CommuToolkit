@@ -2,6 +2,7 @@
 
 using DomainService;
 
+using System.ComponentModel;
 using System.Windows;
 
 
@@ -21,6 +22,8 @@ namespace UiParts.UiWindow.MainWindow
 
                 var entity = _model.AaaEntity;
                 entity.YYY = new(value);
+
+                OnPropertyChanged();
             }
         }
 
@@ -105,19 +108,28 @@ namespace UiParts.UiWindow.MainWindow
         {
             _model = model;
 
-            _model.PropertyChanged += (sender, e) =>
+            _model.PropertyChanged += _model_PropertyChanged;
+        }
+
+        private void _model_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_model.AaaEntity))
             {
-                if (e.PropertyName == nameof(_model.AaaEntity))
-                {
-                    OnPropertyChanged(nameof(YYYVal));
-                    OnPropertyChanged(nameof(ZZZVal));
-                    OnPropertyChanged(nameof(AAAVal));
-                }
-                else if (e.PropertyName == nameof(_model.BbbEntity))
-                {
-                    OnPropertyChanged(nameof(BBBVal));
-                }
-            };
+                OnPropertyChanged(nameof(YYYVal));
+                OnPropertyChanged(nameof(ZZZVal));
+                OnPropertyChanged(nameof(AAAVal));
+            }
+            else if (e.PropertyName == nameof(_model.BbbEntity))
+            {
+                OnPropertyChanged(nameof(BBBVal));
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            _model.PropertyChanged -= _model_PropertyChanged;
         }
     }
 }
