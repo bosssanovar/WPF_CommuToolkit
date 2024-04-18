@@ -1,4 +1,4 @@
-﻿<uiwindow:WindowBase xmlns:uiwindow="clr-namespace:UiParts.UiWindow" x:Class="UiParts.UiWindow.MainWindow.MainWindowView"
+﻿<Window x:Class="UiParts.UiWindow.MainWindow.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,15 +27,15 @@
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="YYY設定" Margin="5"/>
 
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding YYYVal.Value}" Margin="5"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding YYYVal}" Margin="5"/>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="ZZZ設定 入力文字数指定上限" Margin="5"/>
 
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ZZZVal.Value}" Margin="5"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ZZZVal}" Margin="5"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="AAA設定 入力文字数指定" Margin="5"/>
 
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AAAVal.Value}" Margin="5"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AAAVal}" Margin="5"/>
             </Grid>
         </GroupBox>
 
@@ -48,9 +48,9 @@
 
                 <TextBlock Grid.Column="0" Text="BBB設定" Margin="5"/>
 
-                <TextBox Grid.Column="1" Text="{Binding BBBVal.Value}" Margin="5"/>
+                <TextBox Grid.Column="1" Text="{Binding BBBVal}" Margin="5"/>
             </Grid>
         </GroupBox>
 
     </Grid>
-</uiwindow:WindowBase>
+</Window>
