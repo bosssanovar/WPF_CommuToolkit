@@ -108,10 +108,10 @@ namespace UiParts.UiWindow.MainWindow
         {
             _model = model;
 
-            _model.PropertyChanged += _model_PropertyChanged;
+            _model.PropertyChanged += Model_PropertyChanged;
         }
 
-        private void _model_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Model_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_model.AaaEntity))
             {
@@ -129,7 +129,7 @@ namespace UiParts.UiWindow.MainWindow
         {
             base.OnClosing(e);
 
-            _model.PropertyChanged -= _model_PropertyChanged;
+            _model.PropertyChanged -= Model_PropertyChanged;
         }
     }
 }
